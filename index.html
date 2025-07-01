@@ -186,7 +186,7 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
               We evaluate our method using the Meta-World benchmarks, which assess agents' generalization capabilities across diverse task distributions. This benchmark suite encompasses 50 distinct robotic manipulation tasks, with each task featuring 50 parametric variants that incorporate randomized goals and initial object positions. The ML-10 benchmark comprises N<sub>train</sub>=10 training tasks and N<sub>test</sub> = 5 test tasks, while the ML-45 benchmark includes N<sub>train</sub> = 45 training tasks and N<sub>test</sub> = 5 test tasks. The benchmarks do not provide task IDs as input; instead, agents must infer task attributes through experience while maximizing their return within a meta-episode of H<sup>+</sup> = 1000 steps, consisting of n<sub>roll</sub> = 2 rollout episodes with a horizon of H = 500 steps each. To demonstrate the adaptability of our method and baseline methods to unseen tasks, the meta-trained policies were rolled out across two episodes.
             </p>
             <div class="has-text-centered">
-              <img src="static/images/table1.png" alt="Method" width="100%">
+              <img src="static/images/Table1.png" alt="Method" width="100%">
             </div>
             <p>
               The Learning Curves of Success Rates and Returns on Meta-World Training Tasks as shown in the following figure:
