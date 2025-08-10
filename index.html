@@ -56,21 +56,24 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Zhengwei Li</a><sup></sup>,</span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Zhengwei Li</a><sup>1,2</sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Zhenyang Lin</a><sup></sup>,</span>
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Zhenyang Lin</a><sup>1,2</sup>,</span>
                   <span class="author-block">
-                    <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Yurou Chen</a><sup></sup>,</span>
+                    <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Yurou Chen</a><sup>2</sup>,</span>
                     <span class="author-block">
-                      <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Lu Zhang</a><sup></sup>,</span>
+                      <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Lu Zhang</a><sup>2</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Zhiyong Liu</a>
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Zhiyong Liu</a><sup>1,2</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">State Key Laboratory of Multimodal Artificial Intelligence Systems,
-                      <br>Institute of Automation, Chinese Academy of Sciences</span>
+                    <span class="author-block"><sup>1</sup> The School of Artificial Intelligence,
+                      University of Chinese Academy of Sciences.</span>
+                    <span class="author-block"><sup>2</sup> State Key Laboratory of Multimodal Artificial Intelligence Systems,
+                      Institute of Automation, Chinese Academy of Sciences.</span>
+                    <span class="author-block"> IEEE Robotics and Automation Letters (RA-L)</span>
             
                   </div>
 
@@ -88,7 +91,7 @@
                     </span> -->
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -96,7 +99,7 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Github link -->
                   <!-- <span class="link-block">
@@ -150,7 +153,7 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
 
 
 <!-- Paper method -->
-<section class="hero is-small is-light">
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
@@ -161,7 +164,7 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
               We address the challenge of task-level adaptation, which requires agents to adapt diverse tasks. To achieve this, we propose a novel meta-RL framework that combines coarse-to-fine policy refinement with holistic-local contrastive task representations to enhance learning efficiency and zero-shot adaptation. Our method leverages the hierarchical characteristics inherent in task-level adaptation to improve adaptation performance. Our framework comprises two key components: coarse-to-fine policy refinement and holistic-local contrastive task representations. The coarse-to-fine policy refinement integrates a task instruction-guided mechanism for selecting task-specific parameterized modules as the coarse policy with a hypernetwork-based task-aware policy as the fine policy. To develop robust task representations for generating effective task-aware policies, we introduce holistic-local contrastive task representations that operate at both task inter-category and intra-category levels.
             </p>
             <div class="has-text-centered">
-              <img src="static/images/Framework.png" alt="Method" width="100%">
+              <img src="static/images/Framework.png" alt="Method" width="80%">
             </div>
           </div>
         </div>
@@ -182,17 +185,46 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
         <div class="column is-four-fifths">
           <h2 class="title">Results</h2>
           <div class="content has-text-justified">
+            <h3 class="title is-4">Experimental Setup</h3>
             <p>
               We evaluate our method using the Meta-World benchmarks, which assess agents' generalization capabilities across diverse task distributions. This benchmark suite encompasses 50 distinct robotic manipulation tasks, with each task featuring 50 parametric variants that incorporate randomized goals and initial object positions. The ML-10 benchmark comprises N<sub>train</sub>=10 training tasks and N<sub>test</sub> = 5 test tasks, while the ML-45 benchmark includes N<sub>train</sub> = 45 training tasks and N<sub>test</sub> = 5 test tasks. The benchmarks do not provide task IDs as input; instead, agents must infer task attributes through experience while maximizing their return within a meta-episode of H<sup>+</sup> = 1000 steps, consisting of n<sub>roll</sub> = 2 rollout episodes with a horizon of H = 500 steps each. To demonstrate the adaptability of our method and baseline methods to unseen tasks, the meta-trained policies were rolled out across two episodes.
             </p>
+            <h3 class="title is-4">Comparison Results</h3>
+            <p>&bull; To demonstrate the adaptability of our method and baseline methods to unseen tasks, the meta-trained policies were rolled out across two episodes. We report the maximum success rate averaged across six seeds, along with the corresponding returns.</p>
             <div class="has-text-centered">
-              <img src="static/images/Table1.png" alt="Method" width="100%">
+              <img src="static/images/table1.png" alt="Method" width="100%">
             </div>
+            <br>
             <p>
-              The Learning Curves of Success Rates and Returns on Meta-World Training Tasks as shown in the following figure:
+              &bull; The Learning Curves of Success Rates and Returns on Meta-World Training Tasks as shown in the following figure:
             </p>
             <div class="has-text-centered">
-              <img src="static/images/Training Curve.png" alt="Method" width="100%">
+              <img src="static/images/Training Curve.png" alt="Method" width="80%">
+            </div>
+            <h3 class="title is-4">Ablation Study</h3>
+            <p>
+              &bull; To evaluate the key components of our method, we performed ablation studies focusing on two crucial elements: the coarse-to-fine policy refinement (CFO) and the holistic-local contrastive task representations (HLR).
+            </p>
+            <div class="has-text-centered">
+              <img src="static/images/table2.png" alt="Method" width="100%">
+            </div>
+            <h3 class="title is-4">Real-World Evaluation</h3>
+            <p> 
+              &bull; We train CFOHLR on the Meta-World simulation suite and deploy the trained policy directly on the UR3 arm without real-world fine-tuning. Quantitatively, we evaluate 10 trials for each task, achieving an average success rate of 90% on the open-drawer task and 100% on the close-drawer task.
+            </p>
+            <div class="item item-video1" style="max-width: 800px; margin: 0 auto;">
+              <video poster="" id="video1" autoplay controls muted loop style="width:100%; height:auto;">
+                <!-- Your video file here -->
+                <source src="static/videos/OpenDrawer.mp4"
+                type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-video2" style="max-width: 800px; margin: 0 auto;">
+              <video poster="" id="video2" autoplay controls muted loop style="width:100%; height:auto;">
+                <!-- Your video file here -->
+                <source src="static/videos/CloseDrawer.mp4"
+                type="video/mp4">
+              </video>
             </div>
           </div>
         </div>
@@ -205,7 +237,7 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
 
 
 <!-- Paper poster -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title">Supplementary</h2>
@@ -215,30 +247,57 @@ To address these challenges, we propose a <strong>C</strong>oarse-to-<strong>F</
         
       </div>
     </div>
-  </section>
+  </section> -->
 <!--End paper poster -->
 
 
 
 
-
-  <!-- <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
+<!-- Paper conclusion -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+      <h2 class="title">Conclusion</h2>
+      <div class="content has-text-justified">
+        <p>
+          In this study, we introduce a novel method that significantly enhances zero-shot performance in task-level adaptation within meta-RL. This improvement stems from incorporating hierarchical characteristics in both task representation and policy execution. Our approach integrates coarse-to-fine policy refinement with holistic-local contrastive task representation. Specifically, we leverage task instructions to select parameterized modules as a coarse policy, which is subsequently refined by a fine policy employing a hypernetwork to generate task-aware policies based on task representations. To develop effective task-aware policies, we implement contrastive learning at both holistic and local levels to create robust task representations.
+        </p>
+      </div>
       </div>
     </div>
+    </div>
   </div>
-</footer> -->
+</section>
+
+
+<!-- Paper conclusion -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+      <h2 class="title">BibTex</h2>
+      <div class="content has-text-justified">
+        <p>
+          <div style="border-radius: 8px; padding: 16px; border: 1px solid #e0e0e0;">
+            @article{li2025zero,
+              <br>title={Zero-Shot Adaptation at Task-Level via Coarse-to-Fine Policy Refinement and Holistic-Local Contrastive Representation},
+              <br>author={Li, Zhengwei and Lin, Zhenyang and Chen, Yurou and Zhang, Lu and Liu, Zhiyong},
+              <br>journal={IEEE Robotics and Automation Letters},
+              <br>year={2025},
+              <br>publisher={IEEE}
+              <br>}
+          </div>
+        </p>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Statcounter tracking code -->
   
